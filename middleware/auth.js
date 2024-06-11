@@ -42,6 +42,11 @@ function ensureLoggedIn(req, res, next) {
   }
 }
 
+/** Middleware to use when they must be admin user.
+ *
+ * If not, raises Unauthorized.
+ */
+
 function ensureAdmin(req, res, next) {
   try{
     if (!res.locals.user || res.locals.user.isAdmin !== true){
@@ -52,6 +57,11 @@ function ensureAdmin(req, res, next) {
     return next(err)
   }
 }
+
+/** Middleware to use when they must be right current user or admin user.
+ *
+ * If not, raises Unauthorized.
+ */
 
 function ensureAdminOrRightUser (req, res, next){
   try{
@@ -73,7 +83,3 @@ module.exports = {
   ensureAdmin,
   ensureAdminOrRightUser
 };
-
-// {
-//   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImplbmplbiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MTc3MjAzMTB9.GWTcNCkFNFrOkzBDFZOitAsoDsmyD7tIDgyU8O0pxwk"
-// }

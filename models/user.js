@@ -217,6 +217,8 @@ class User {
    *  jobId: unique id of job
    * 
    *  Throws NotFound Error if job or user not found
+   * 
+   *  returns undefined
    */
 
   static async apply(username, jobId) {
